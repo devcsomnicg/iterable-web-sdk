@@ -14,6 +14,7 @@ import styled from 'styled-components';
 import LoginForm from 'src/components/LoginForm';
 
 import { UserProvider } from 'src/context/Users';
+import { createRoot } from 'react-dom/client';
 
 const Wrapper = styled.div`
   display: flex;
@@ -61,7 +62,8 @@ const HomeLink = styled(Link)`
     }
   );
 
-  ReactDOM.render(
+  const root = createRoot(document.getElementById('root'));
+  root.render(
     <BrowserRouter>
       <Wrapper>
         <UserProvider>
