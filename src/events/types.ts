@@ -24,3 +24,16 @@ export interface InAppEventRequestParams {
   inboxSessionId?: string;
   createdAt?: number;
 }
+
+export interface EnbeddedMessagingDismiss {
+  email: string;
+  userId?: string;
+  messageId?: string;
+  buttonIdentifier?: string;
+  deviceInfo: {
+    // deviceId?: string; forced to userAgent
+    // platform?: IterablePlatform; forced to "Web."
+    appPackageName: string; // customer-defined name
+  };
+  createdAt?: number;
+}

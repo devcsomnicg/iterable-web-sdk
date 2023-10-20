@@ -7,7 +7,8 @@ import {
   trackInAppClose,
   trackInAppConsume,
   trackInAppDelivery,
-  trackInAppOpen
+  trackInAppOpen,
+  trackEmbeddedMessagingDismiss
 } from '@iterable/web-sdk';
 
 interface Props {}
@@ -46,6 +47,11 @@ export const Events: FC<Props> = () => {
         heading="/trackInAppOpen"
         endpointName="track-open"
         method={trackInAppOpen}
+      />
+      <EventsForm
+        heading="/trackEmbeddedMessagingDismiss"
+        endpointName="track-embedded-messagging-dismiss"
+        method={trackEmbeddedMessagingDismiss}
       />
     </>
   );

@@ -28,3 +28,16 @@ export const eventRequestSchema = object().shape({
   inboxSessionId: string(),
   createdAt: number()
 });
+
+export const embaddedMessagingSchema = object().shape({
+  email: string(),
+  userId: string(),
+  messageId: string().required(),
+  buttonIdentifier: string(),
+  deviceInfo: object().shape({
+    deviceId: string().required(),
+    platform: string().required(),
+    appPackageName: string().required()
+  }),
+  createdAt: number()
+});

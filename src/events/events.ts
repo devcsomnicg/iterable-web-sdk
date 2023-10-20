@@ -1,8 +1,16 @@
 import { baseIterableRequest } from '../request';
-import { InAppEventRequestParams, InAppTrackRequestParams } from './types';
+import {
+  InAppEventRequestParams,
+  InAppTrackRequestParams,
+  EnbeddedMessagingDismiss
+} from './types';
 import { IterableResponse } from '../types';
 import { WEB_PLATFORM } from '../constants';
-import { eventRequestSchema, trackSchema } from './events.schema';
+import {
+  eventRequestSchema,
+  trackSchema,
+  embaddedMessagingSchema
+} from './events.schema';
 
 export const track = (payload: InAppTrackRequestParams) => {
   /* a customer could potentially send these up if they're not using TypeScript */
@@ -156,6 +164,23 @@ export const trackInAppConsume = (
         'inboxSessionId',
         'closeAction'
       ])
+    }
+  });
+};
+
+export const trackEmbeddedMessagingDismiss = (
+  payload: EnbeddedMessagingDismiss
+) => {
+  /* a customer could potentially send these up if they're not using TypeScript */
+  delete (payload as any).userId;
+  delete (payload as any).email;
+
+  return baseIterableRequest<IterableResponse>({
+    method: 'POST',
+    url: 'embedded-messaging/events/dismiss',
+    data: payload,
+    validation: {
+      data: embaddedMessagingSchema
     }
   });
 };
