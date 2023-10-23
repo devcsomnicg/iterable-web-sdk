@@ -40,6 +40,8 @@ export const EventsForm: FC<Props> = ({
     method({
       ...conditionalParams,
       deviceInfo: {
+        deviceId: '123',
+        platform: 'web',
         appPackageName: 'my-website'
       }
     })
